@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.hms.controller.VisitController"
+      styleClass="vbox-container">
+    
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+    
+    <Label text="Patient Visits (Consultations)" styleClass="page-title"/>
+
+    <HBox spacing="15">
+        <VBox spacing="10" prefWidth="300" styleClass="form-card">
+            <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+            <Label text="Log New Visit" styleClass="section-title"/>
+            
+            <Label text="Patient:"/>
+            <ComboBox fx:id="patientCombo" maxWidth="Infinity" promptText="Select Patient"/>
+
+            <Label text="Doctor:"/>
+            <ComboBox fx:id="doctorCombo" maxWidth="Infinity" promptText="Select Doctor"/>
+
+            <Label text="Visit Date:"/>
+            <DatePicker fx:id="datePicker" maxWidth="Infinity"/>
+
+            <Label text="Diagnosis:"/>
+            <TextArea fx:id="diagnosisArea" prefRowCount="3" wrapText="true"/>
+
+            <Label text="Clinical Notes:"/>
+            <TextArea fx:id="notesArea" prefRowCount="4" wrapText="true"/>
+
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button text="Clear" onAction="#onClear" styleClass="btn-secondary"/>
+                <Button text="Save Visit" onAction="#onSave" styleClass="btn-primary"/>
+            </HBox>
+        </VBox>
+
+        <VBox spacing="10" HBox.hgrow="ALWAYS">
+            <TableView fx:id="visitTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="idCol" text="Visit ID" prefWidth="70"/>
+                    <TableColumn fx:id="patientCol" text="Pt ID" prefWidth="70"/>
+                    <TableColumn fx:id="doctorCol" text="Doc ID" prefWidth="70"/>
+                    <TableColumn fx:id="dateCol" text="Date" prefWidth="120"/>
+                    <TableColumn fx:id="diagnosisCol" text="Diagnosis" prefWidth="250"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </HBox>
+</VBox>

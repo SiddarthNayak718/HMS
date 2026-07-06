@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.hms.controller.PrescriptionController"
+      styleClass="vbox-container">
+    
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+    
+    <Label text="Prescription Management" styleClass="page-title"/>
+
+    <HBox spacing="15">
+        <VBox spacing="10" prefWidth="350" styleClass="form-card">
+            <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+            <Label text="Write Prescription" styleClass="section-title"/>
+            
+            <Label text="Select Visit:"/>
+            <ComboBox fx:id="visitCombo" maxWidth="Infinity" promptText="Select Visit"/>
+            
+            <Label text="Prescription Date:"/>
+            <DatePicker fx:id="datePicker" maxWidth="Infinity"/>
+            
+            <Label text="General Notes:"/>
+            <TextArea fx:id="notesArea" prefRowCount="2"/>
+            
+            <Separator />
+            <Label text="Add Medicaton" styleClass="section-subtitle"/>
+            <ComboBox fx:id="medicineCombo" maxWidth="Infinity" promptText="Select Medicine"/>
+            <HBox spacing="5">
+                <TextField fx:id="dosageField" promptText="Dosage (e.g. 500mg)" HBox.hgrow="ALWAYS"/>
+                <TextField fx:id="frequencyField" promptText="Freq (e.g. 1-0-1)" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <HBox spacing="5">
+                <TextField fx:id="daysField" promptText="Days" HBox.hgrow="ALWAYS"/>
+                <TextField fx:id="quantityField" promptText="Total Qty" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <Button text="+ Add Item" onAction="#onAddItem" maxWidth="Infinity" styleClass="btn-secondary"/>
+
+            <Label text="Items Added:"/>
+            <ListView fx:id="itemListView" prefHeight="100"/>
+            
+            <Separator />
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button text="Clear" onAction="#onClear" styleClass="btn-secondary"/>
+                <Button text="Issue Prescription" onAction="#onSavePrescription" styleClass="btn-primary"/>
+            </HBox>
+        </VBox>
+
+        <VBox spacing="10" HBox.hgrow="ALWAYS">
+            <TableView fx:id="prescTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="idCol" text="Presc ID" prefWidth="80"/>
+                    <TableColumn fx:id="visitIdCol" text="Visit ID" prefWidth="80"/>
+                    <TableColumn fx:id="dateCol" text="Date" prefWidth="120"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </HBox>
+</VBox>

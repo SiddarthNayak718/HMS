@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.hms.controller.DashboardController"
+      spacing="20" styleClass="content-root">
+    <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
+
+    <Label text="Dashboard" styleClass="page-title"/>
+
+    <!-- Stat Cards -->
+    <HBox fx:id="cardsBox" spacing="16"/>
+
+    <!-- Today's Appointments Table -->
+    <Label text="Today's Appointments" styleClass="section-title"/>
+
+    <TableView fx:id="todayTable" maxHeight="320" VBox.vgrow="ALWAYS"
+              >
+        <columns>
+            <TableColumn fx:id="colApptId"      text="Appt ID"  minWidth="60"/>
+            <TableColumn fx:id="colPatientName" text="Patient"  minWidth="200"/>
+            <TableColumn fx:id="colDoctorName"  text="Doctor"   minWidth="200"/>
+            <TableColumn fx:id="colApptTime"    text="Time"     minWidth="80"/>
+            <TableColumn fx:id="colReason"      text="Reason"   minWidth="200"/>
+            <TableColumn fx:id="colStatus"      text="Status"   minWidth="100"/>
+        </columns>
+        <placeholder><Label text="No appointments today."/></placeholder>
+    </TableView>
+</VBox>

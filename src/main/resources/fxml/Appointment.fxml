@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<SplitPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.hms.controller.AppointmentController"
+           dividerPositions="0.62" VBox.vgrow="ALWAYS">
+
+    <!-- LEFT: Table pane -->
+    <VBox spacing="10">
+        <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+
+        <Label text="Appointment Management" styleClass="page-title"/>
+
+        <HBox spacing="6" alignment="CENTER_LEFT">
+            <Button text="All"     fx:id="btnAll"     onAction="#onShowAll"/>
+            <Button text="Today"   fx:id="btnToday"   onAction="#onShowToday"/>
+            <Button text="↻"       fx:id="btnRefresh" onAction="#onRefresh"/>
+        </HBox>
+
+        <TableView fx:id="apptTable" VBox.vgrow="ALWAYS"
+                  >
+            <columns>
+                <TableColumn fx:id="colId"          text="ID"       minWidth="55"/>
+                <TableColumn fx:id="colPatient"     text="Patient"  minWidth="170"/>
+                <TableColumn fx:id="colDoctor"      text="Doctor"   minWidth="170"/>
+                <TableColumn fx:id="colDate"        text="Date"     minWidth="100"/>
+                <TableColumn fx:id="colTime"        text="Time"     minWidth="70"/>
+                <TableColumn fx:id="colReason"      text="Reason"   minWidth="180"/>
+                <TableColumn fx:id="colAStatus"     text="Status"   minWidth="90"/>
+            </columns>
+            <placeholder><Label text="No appointments found."/></placeholder>
+        </TableView>
+
+        <HBox spacing="8">
+            <Button text="✖ Cancel"    fx:id="btnCancel"   onAction="#onCancel"   styleClass="btn-danger"/>
+            <Button text="✔ Complete"  fx:id="btnComplete" onAction="#onComplete" styleClass="btn-success"/>
+        </HBox>
+    </VBox>
+
+    <!-- RIGHT: Form pane -->
+    <VBox spacing="10">
+        <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+
+        <Label text="Book Appointment" styleClass="section-title"/>
+
+        <GridPane hgap="8" vgap="8">
+            <columnConstraints>
+                <ColumnConstraints minWidth="90"/>
+                <ColumnConstraints hgrow="ALWAYS"/>
+            </columnConstraints>
+
+            <Label text="Patient"  GridPane.rowIndex="0" styleClass="form-label"/>
+            <ComboBox fx:id="cbPatient" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                      promptText="Select Patient *" maxWidth="Infinity"/>
+
+            <Label text="Doctor"   GridPane.rowIndex="1" styleClass="form-label"/>
+            <ComboBox fx:id="cbDoctor"  GridPane.rowIndex="1" GridPane.columnIndex="1"
+                      promptText="Select Doctor *" maxWidth="Infinity"/>
+
+            <Label text="Date"     GridPane.rowIndex="2" styleClass="form-label"/>
+            <DatePicker fx:id="dpDate" GridPane.rowIndex="2" GridPane.columnIndex="1"
+                        maxWidth="Infinity"/>
+
+            <Label text="Time"     GridPane.rowIndex="3" styleClass="form-label"/>
+            <ComboBox fx:id="cbTime"    GridPane.rowIndex="3" GridPane.columnIndex="1"
+                      promptText="Select Time *" maxWidth="Infinity"/>
+
+            <Label text="Reason"   GridPane.rowIndex="4" styleClass="form-label"/>
+            <TextArea fx:id="taReason"  GridPane.rowIndex="4" GridPane.columnIndex="1"
+                      promptText="Reason / Chief Complaint" prefRowCount="3"/>
+        </GridPane>
+
+        <HBox spacing="10">
+            <Button text="📅 Book"  fx:id="btnBook"  onAction="#onBook"  styleClass="btn-primary"/>
+            <Button text="✖ Clear"  fx:id="btnClear" onAction="#onClear" styleClass="btn-secondary"/>
+        </HBox>
+    </VBox>
+</SplitPane>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<SplitPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.hms.controller.MedicineController"
+           dividerPositions="0.62" VBox.vgrow="ALWAYS">
+
+    <!-- LEFT: Table pane -->
+    <VBox spacing="10">
+        <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+
+        <Label text="Medicine Inventory" styleClass="page-title"/>
+
+        <HBox spacing="8" alignment="CENTER_LEFT">
+            <TextField fx:id="searchField" promptText="🔍 Search medicine…" prefWidth="240"
+                       onKeyReleased="#onSearch"/>
+            <Button text="⚠ Low Stock" fx:id="btnLowStock" onAction="#onLowStock"
+                    styleClass="btn-warning"/>
+            <Button text="↻"           fx:id="btnRefresh"  onAction="#onRefresh"/>
+        </HBox>
+
+        <TableView fx:id="medicineTable" VBox.vgrow="ALWAYS"
+                  >
+            <columns>
+                <TableColumn fx:id="colId"    text="ID"           minWidth="55"/>
+                <TableColumn fx:id="colName"  text="Name"         minWidth="180"/>
+                <TableColumn fx:id="colCat"   text="Category"     minWidth="110"/>
+                <TableColumn fx:id="colPrice" text="Unit Price"   minWidth="90"/>
+                <TableColumn fx:id="colStock" text="Stock Qty"    minWidth="80"/>
+                <TableColumn fx:id="colMfr"   text="Manufacturer" minWidth="130"/>
+                <TableColumn fx:id="colExp"   text="Expiry"       minWidth="100"/>
+            </columns>
+            <placeholder><Label text="No medicines found."/></placeholder>
+        </TableView>
+    </VBox>
+
+    <!-- RIGHT: Form pane -->
+    <VBox spacing="10">
+        <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+
+        <Label text="Medicine Details" styleClass="section-title"/>
+
+        <GridPane hgap="8" vgap="8">
+            <columnConstraints>
+                <ColumnConstraints minWidth="100"/>
+                <ColumnConstraints hgrow="ALWAYS"/>
+            </columnConstraints>
+
+            <Label text="Name"         GridPane.rowIndex="0" styleClass="form-label"/>
+            <TextField fx:id="tfName"     promptText="Medicine Name *"
+                       GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="Category"     GridPane.rowIndex="1" styleClass="form-label"/>
+            <TextField fx:id="tfCategory" promptText="Category"
+                       GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label text="Unit Price"   GridPane.rowIndex="2" styleClass="form-label"/>
+            <TextField fx:id="tfPrice"    promptText="Unit Price (₹) *"
+                       GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <Label text="Stock Qty"    GridPane.rowIndex="3" styleClass="form-label"/>
+            <TextField fx:id="tfStock"    promptText="Stock Quantity *"
+                       GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+            <Label text="Manufacturer" GridPane.rowIndex="4" styleClass="form-label"/>
+            <TextField fx:id="tfMfr"      promptText="Manufacturer"
+                       GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+            <Label text="Expiry Date"  GridPane.rowIndex="5" styleClass="form-label"/>
+            <DatePicker fx:id="dpExpiry"  GridPane.rowIndex="5" GridPane.columnIndex="1"
+                        promptText="Expiry Date" maxWidth="Infinity"/>
+        </GridPane>
+
+        <HBox spacing="10">
+            <Button text="💾 Save"  fx:id="btnSave"  onAction="#onSave"  styleClass="btn-success"/>
+            <Button text="✖ Clear"  fx:id="btnClear" onAction="#onClear" styleClass="btn-secondary"/>
+        </HBox>
+    </VBox>
+</SplitPane>

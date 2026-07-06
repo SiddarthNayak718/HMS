@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.hms.controller.ReportsController"
+      spacing="16" VBox.vgrow="ALWAYS">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <Label text="Reports &amp; Analytics" styleClass="page-title"/>
+
+    <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+
+        <!-- TAB 1: Daily Appointments -->
+        <Tab text="📅 Daily Appointments">
+            <VBox spacing="10">
+                <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <Label text="Date:"/>
+                    <DatePicker fx:id="dpApptDate"/>
+                    <Button text="Load" fx:id="btnLoadAppts" onAction="#onLoadAppointments"
+                            styleClass="btn-primary"/>
+                </HBox>
+                <TableView fx:id="apptReportTable" VBox.vgrow="ALWAYS"
+                          >
+                    <columns>
+                        <TableColumn fx:id="colRApptId"   text="ID"       minWidth="55"/>
+                        <TableColumn fx:id="colRPatient"  text="Patient"  minWidth="160"/>
+                        <TableColumn fx:id="colRDoctor"   text="Doctor"   minWidth="160"/>
+                        <TableColumn fx:id="colRDate"     text="Date"     minWidth="100"/>
+                        <TableColumn fx:id="colRTime"     text="Time"     minWidth="70"/>
+                        <TableColumn fx:id="colRReason"   text="Reason"   minWidth="180"/>
+                        <TableColumn fx:id="colRStatus"   text="Status"   minWidth="90"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+
+        <!-- TAB 2: Patient History -->
+        <Tab text="👥 Patient Appointments">
+            <VBox spacing="10">
+                <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <Label text="Patient:"/>
+                    <ComboBox fx:id="cbHistoryPatient" promptText="Select Patient" prefWidth="280"/>
+                    <Button text="Load History" fx:id="btnLoadHistory" onAction="#onLoadHistory"
+                            styleClass="btn-purple"/>
+                </HBox>
+                <TableView fx:id="historyTable" VBox.vgrow="ALWAYS"
+                          >
+                    <columns>
+                        <TableColumn fx:id="colHApptId"  text="ID"       minWidth="55"/>
+                        <TableColumn fx:id="colHPatient" text="Patient"  minWidth="160"/>
+                        <TableColumn fx:id="colHDoctor"  text="Doctor"   minWidth="160"/>
+                        <TableColumn fx:id="colHDate"    text="Date"     minWidth="100"/>
+                        <TableColumn fx:id="colHTime"    text="Time"     minWidth="70"/>
+                        <TableColumn fx:id="colHReason"  text="Reason"   minWidth="180"/>
+                        <TableColumn fx:id="colHStatus"  text="Status"   minWidth="90"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+
+        <!-- TAB 3: Revenue Summary -->
+        <Tab text="💰 Revenue Summary">
+            <VBox spacing="10">
+                <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+                <Label fx:id="lblTodayRevenue" text="Today's Revenue: ₹0.00" styleClass="net-label"/>
+                <TableView fx:id="revenueTable" VBox.vgrow="ALWAYS"
+                          >
+                    <columns>
+                        <TableColumn fx:id="colRevBillId"  text="Bill ID"   minWidth="60"/>
+                        <TableColumn fx:id="colRevPatient" text="Patient"   minWidth="160"/>
+                        <TableColumn fx:id="colRevDate"    text="Date"      minWidth="90"/>
+                        <TableColumn fx:id="colRevTotal"   text="Total (₹)" minWidth="90"/>
+                        <TableColumn fx:id="colRevDisc"    text="Discount"  minWidth="80"/>
+                        <TableColumn fx:id="colRevNet"     text="Net (₹)"   minWidth="90"/>
+                        <TableColumn fx:id="colRevStatus"  text="Status"    minWidth="70"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+
+        <!-- TAB 4: Low Stock -->
+        <Tab text="⚠ Low Stock">
+            <VBox spacing="10">
+                <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+                <Label text="Medicines with stock ≤ 50 units:" styleClass="warning-label"/>
+                <TableView fx:id="lowStockTable" VBox.vgrow="ALWAYS"
+                          >
+                    <columns>
+                        <TableColumn fx:id="colLsId"    text="ID"           minWidth="55"/>
+                        <TableColumn fx:id="colLsName"  text="Name"         minWidth="200"/>
+                        <TableColumn fx:id="colLsCat"   text="Category"     minWidth="120"/>
+                        <TableColumn fx:id="colLsStock" text="Stock"        minWidth="80"/>
+                        <TableColumn fx:id="colLsMfr"   text="Manufacturer" minWidth="150"/>
+                    </columns>
+                    <placeholder><Label text="✅ All medicines have adequate stock."/></placeholder>
+                </TableView>
+            </VBox>
+        </Tab>
+
+    </TabPane>
+</VBox>

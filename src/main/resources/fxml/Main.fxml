@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.hms.controller.MainController">
+
+    <!-- TOP BAR -->
+    <top>
+        <HBox styleClass="top-bar" alignment="CENTER_LEFT">
+            <padding><Insets top="12" right="20" bottom="12" left="20"/></padding>
+            <Label text="🏥  Hospital Management System" styleClass="top-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label text="👤  Admin" styleClass="top-user"/>
+        </HBox>
+    </top>
+
+    <!-- SIDEBAR -->
+    <left>
+        <VBox fx:id="sidebar" prefWidth="200" styleClass="sidebar">
+            <padding><Insets top="16" right="8" bottom="16" left="8"/></padding>
+
+            <Button text="🏠  Dashboard"    maxWidth="Infinity" alignment="CENTER_LEFT"
+                    styleClass="nav-btn" onAction="#onDashboard">
+                <padding><Insets top="10" right="12" bottom="10" left="12"/></padding>
+            </Button>
+            <Button text="👥  Patients"     maxWidth="Infinity" alignment="CENTER_LEFT"
+                    styleClass="nav-btn" onAction="#onPatients">
+                <padding><Insets top="10" right="12" bottom="10" left="12"/></padding>
+            </Button>
+            <Button text="🩺  Doctors"      maxWidth="Infinity" alignment="CENTER_LEFT"
+                    styleClass="nav-btn" onAction="#onDoctors">
+                <padding><Insets top="10" right="12" bottom="10" left="12"/></padding>
+            </Button>
+            <Button text="📅  Appointments" maxWidth="Infinity" alignment="CENTER_LEFT"
+                    styleClass="nav-btn" onAction="#onAppointments">
+                <padding><Insets top="10" right="12" bottom="10" left="12"/></padding>
+            </Button>
+            <Button text="🩺  Visits"       maxWidth="Infinity" alignment="CENTER_LEFT"
+                    styleClass="nav-btn" onAction="#onVisits">
+                <padding><Insets top="10" right="12" bottom="10" left="12"/></padding>
+            </Button>
+            <Button text="📝  Prescriptions" maxWidth="Infinity" alignment="CENTER_LEFT"
+                    styleClass="nav-btn" onAction="#onPrescriptions">
+                <padding><Insets top="10" right="12" bottom="10" left="12"/></padding>
+            </Button>
+            <Button text="🔬  Lab Tests"    maxWidth="Infinity" alignment="CENTER_LEFT"
+                    styleClass="nav-btn" onAction="#onLabTests">
+                <padding><Insets top="10" right="12" bottom="10" left="12"/></padding>
+            </Button>
+            <Button text="💊  Medicines"    maxWidth="Infinity" alignment="CENTER_LEFT"
+                    styleClass="nav-btn" onAction="#onMedicines">
+                <padding><Insets top="10" right="12" bottom="10" left="12"/></padding>
+            </Button>
+            <Button text="🧾  Billing"      maxWidth="Infinity" alignment="CENTER_LEFT"
+                    styleClass="nav-btn" onAction="#onBilling">
+                <padding><Insets top="10" right="12" bottom="10" left="12"/></padding>
+            </Button>
+            <Button text="📊  Reports"      maxWidth="Infinity" alignment="CENTER_LEFT"
+                    styleClass="nav-btn" onAction="#onReports">
+                <padding><Insets top="10" right="12" bottom="10" left="12"/></padding>
+            </Button>
+
+            <Region VBox.vgrow="ALWAYS"/>
+        </VBox>
+    </left>
+
+    <!-- CONTENT AREA -->
+    <center>
+        <StackPane fx:id="contentArea" styleClass="content-area"/>
+    </center>
+
+</BorderPane>

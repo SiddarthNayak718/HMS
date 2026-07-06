@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.hms.controller.LabTestController"
+      styleClass="vbox-container">
+    
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+    
+    <Label text="Lab Tests &amp; Orders" styleClass="page-title"/>
+
+    <HBox spacing="15">
+        <VBox spacing="10" prefWidth="300" styleClass="form-card">
+            <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+            <Label text="Order New Lab Test" styleClass="section-title"/>
+            
+            <Label text="Associated Visit:"/>
+            <ComboBox fx:id="visitCombo" maxWidth="Infinity" promptText="Select Visit"/>
+            
+            <Label text="Select Test:"/>
+            <ComboBox fx:id="testCombo" maxWidth="Infinity" promptText="Select Lab Test"/>
+            
+            <Label text="Order Date:"/>
+            <DatePicker fx:id="orderDatePicker" maxWidth="Infinity"/>
+            
+            <Button text="Order Test" onAction="#onOrderTest" maxWidth="Infinity" styleClass="btn-primary"/>
+            
+            <Separator />
+            <Label text="Update Pending Results" styleClass="section-title"/>
+            <Label text="(Select a Pending item from table)" wrapText="true" textFill="gray"/>
+            <TextField fx:id="resultField" promptText="Enter Result Value (e.g. 85 mg/dL)"/>
+            <Button fx:id="updateResultBtn" text="Update Result" onAction="#onUpdateResult" maxWidth="Infinity" styleClass="btn-secondary"/>
+
+        </VBox>
+
+        <VBox spacing="10" HBox.hgrow="ALWAYS">
+            <TableView fx:id="orderTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="idCol" text="Order ID" prefWidth="70"/>
+                    <TableColumn fx:id="patientCol" text="Patient Name" prefWidth="150"/>
+                    <TableColumn fx:id="testCol" text="Test Name" prefWidth="150"/>
+                    <TableColumn fx:id="dateCol" text="Order Date" prefWidth="100"/>
+                    <TableColumn fx:id="statusCol" text="Status" prefWidth="90"/>
+                    <TableColumn fx:id="resultCol" text="Result" prefWidth="150"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </HBox>
+</VBox>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<SplitPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.hms.controller.DoctorController"
+           dividerPositions="0.62" VBox.vgrow="ALWAYS">
+
+    <!-- LEFT: Table pane -->
+    <VBox spacing="10">
+        <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+
+        <Label text="Doctor Management" styleClass="page-title"/>
+
+        <HBox spacing="8" alignment="CENTER_LEFT">
+            <Button text="↻ Refresh" fx:id="btnRefresh" onAction="#onRefresh"/>
+        </HBox>
+
+        <TableView fx:id="doctorTable" VBox.vgrow="ALWAYS"
+                  >
+            <columns>
+                <TableColumn fx:id="colId"     text="ID"             minWidth="60"/>
+                <TableColumn fx:id="colFirst"  text="First Name"     minWidth="120"/>
+                <TableColumn fx:id="colLast"   text="Last Name"      minWidth="120"/>
+                <TableColumn fx:id="colSpec"   text="Specialization" minWidth="160"/>
+                <TableColumn fx:id="colDept"   text="Department"     minWidth="140"/>
+                <TableColumn fx:id="colPhone"  text="Phone"          minWidth="110"/>
+                <TableColumn fx:id="colDStatus" text="Status"        minWidth="70"/>
+            </columns>
+            <placeholder><Label text="No doctors found."/></placeholder>
+        </TableView>
+    </VBox>
+
+    <!-- RIGHT: Form pane -->
+    <VBox spacing="10">
+        <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+
+        <Label text="Doctor Details" styleClass="section-title"/>
+
+        <GridPane hgap="8" vgap="8">
+            <columnConstraints>
+                <ColumnConstraints minWidth="110"/>
+                <ColumnConstraints hgrow="ALWAYS"/>
+            </columnConstraints>
+
+            <Label text="First Name"      GridPane.rowIndex="0" styleClass="form-label"/>
+            <TextField fx:id="tfFirst"   promptText="First Name *"
+                       GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="Last Name"       GridPane.rowIndex="1" styleClass="form-label"/>
+            <TextField fx:id="tfLast"    promptText="Last Name *"
+                       GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label text="Specialization"  GridPane.rowIndex="2" styleClass="form-label"/>
+            <TextField fx:id="tfSpec"    promptText="Specialization"
+                       GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <Label text="Department"      GridPane.rowIndex="3" styleClass="form-label"/>
+            <ComboBox fx:id="cbDept"      GridPane.rowIndex="3" GridPane.columnIndex="1"
+                      promptText="Select Department" maxWidth="Infinity"/>
+
+            <Label text="Phone"           GridPane.rowIndex="4" styleClass="form-label"/>
+            <TextField fx:id="tfPhone"   promptText="Phone *"
+                       GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+            <Label text="Email"           GridPane.rowIndex="5" styleClass="form-label"/>
+            <TextField fx:id="tfEmail"   promptText="Email"
+                       GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+            <Label text="Qualification"   GridPane.rowIndex="6" styleClass="form-label"/>
+            <TextField fx:id="tfQual"    promptText="Qualification"
+                       GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+            <Label text="Status"          GridPane.rowIndex="7" styleClass="form-label"/>
+            <ComboBox fx:id="cbStatus"    GridPane.rowIndex="7" GridPane.columnIndex="1"
+                      maxWidth="Infinity"/>
+        </GridPane>
+
+        <HBox spacing="10">
+            <Button text="💾 Save"  fx:id="btnSave"  onAction="#onSave"  styleClass="btn-success"/>
+            <Button text="✖ Clear"  fx:id="btnClear" onAction="#onClear" styleClass="btn-secondary"/>
+        </HBox>
+    </VBox>
+</SplitPane>
